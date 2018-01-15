@@ -106,9 +106,9 @@ func (this *HouseController) GetHouseInfo() {
 		return
 	}
 	//组织json
-	data = make(map[string]interface{})
-
-	resp.Data = data
+	//	data = make(map[string]interface{})
+	//	data["houses"]=
+	//	resp.Data = data
 	return
 
 }
