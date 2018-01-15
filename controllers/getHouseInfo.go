@@ -105,10 +105,27 @@ func (this *HouseController) GetHouseInfo() {
 		resp.Errmsg = models.RecodeText(resp.Errno)
 		return
 	}
+
 	//组织json
-	//	data = make(map[string]interface{})
-	//	data["houses"]=
-	//	resp.Data = data
+	houseList := []interface{}{}
+	for _, house := range houseInfo {
+		m_house := map[string]interface{}{
+			"address":     house.Address,
+			"area_name":   house.Area.Name,
+			"ctime":       house.Ctime,
+			"house_id":    house.Id,
+			"img_url":     house.Index_image_url,
+			"order_count": house.Order_count,
+			"price":       house.Price,
+			"room_count":  house.Room_count,
+			"title":       house.Title,
+			"user_avatar": "不知道这个是什么",
+		}
+		houseList = append(houseList, m_house)
+	}
+	data := make(map[string]interface{})
+	data["houses"] = houseList
+	resp.Data = data
 	return
 
 }
